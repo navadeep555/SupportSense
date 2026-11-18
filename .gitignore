@@ -1,0 +1,25 @@
+# ---- Secrets: never commit real credentials ----
+.env
+*.env
+!.env.example
+
+# ---- Python ----
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# ---- Generated data (rebuilt by scripts, not hand-written) ----
+backend/data/index/
+backend/data/models/
+*.db
+
+# ---- Frontend ----
+node_modules/
+dist/
+
+# ---- Editor / OS ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,18 @@
+# ---- Web API (Phase 2) ----
+fastapi==0.165.0            # web framework: routes, validation, auto docs at /docs
+uvicorn[standard]==0.54.0   # ASGI server that actually runs the FastAPI app
+pydantic-settings==2.16.3   # reads configuration from environment variables / .env
+
+# ---- Testing (Phase 2) ----
+pytest==9.2.0               # test runner
+httpx2==2.16.2              # used by FastAPI's TestClient to send fake HTTP requests
+
+# ---- RAG pipeline (Phase 3) ----
+sentence-transformers==6.3.0  # pretrained neural embedding models (pulls in PyTorch + transformers)
+faiss-cpu==1.16.0             # vector similarity search
+rank-bm25==0.2.2              # BM25 keyword search for hybrid retrieval
+numpy==2.5.5                  # arrays of vectors (also a dependency of the above)
+# Note: pip installs the CPU build of PyTorch (torch 2.15.0+cpu), which is enough
+# for embedding a few hundred short chunks.
+
+# Later phases will add: sqlalchemy, scikit-learn, an Ollama client (each explained when added).
