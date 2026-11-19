@@ -18,7 +18,9 @@ DATA_DIR = BACKEND_DIR / "data"
 class Settings(BaseSettings):
     # Where to read extra values from. extra="ignore" means unknown keys in .env
     # (e.g. settings for later phases) don't crash the app.
-    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+    # The path is anchored to backend/ (not the current folder), so .env is found
+    # even when the server is started from somewhere else.
+    model_config = SettingsConfigDict(env_file=BACKEND_DIR / ".env", extra="ignore")
 
     app_name: str = "SupportSense"
     app_version: str = "0.1.0"
