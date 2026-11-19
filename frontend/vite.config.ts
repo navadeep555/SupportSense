@@ -17,5 +17,11 @@ export default defineConfig({
   test: {
     environment: 'jsdom', // a simulated browser DOM, so components can render in Node
     setupFiles: './src/test/setup.ts',
+    coverage: {
+      provider: 'v8', // uses V8's built-in coverage counters (no code instrumentation step)
+      include: ['src/**/*.{ts,tsx}'],
+      exclude: ['src/**/*.test.{ts,tsx}', 'src/test/**', 'src/main.tsx'],
+      reporter: ['text-summary', 'text'],
+    },
   },
 })

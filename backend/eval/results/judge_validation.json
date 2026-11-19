@@ -1,0 +1,24 @@
+{
+  "nli_model": "cross-encoder/nli-deberta-v3-small",
+  "llm_model": "qwen2.5:7b",
+  "nli": {
+    "pairs": 24,
+    "accuracy": 0.917,
+    "catches_unsupported": 0.917,
+    "accepts_supported": 0.917,
+    "tp": 11,
+    "fp": 1,
+    "tn": 11,
+    "fn": 1
+  },
+  "llm": {
+    "pairs": 24,
+    "accuracy": 1.0,
+    "catches_unsupported": 1.0,
+    "accepts_supported": 1.0,
+    "tp": 12,
+    "fp": 0,
+    "tn": 12,
+    "fn": 0
+  }
+}

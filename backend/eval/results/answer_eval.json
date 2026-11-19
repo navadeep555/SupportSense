@@ -1,0 +1,1754 @@
+{
+  "model": "qwen2.5:7b",
+  "summary": {
+    "answerable": {
+      "questions": 30,
+      "answered": 29,
+      "answer_rate": 0.967,
+      "status_counts": {
+        "grounded": 29,
+        "insufficient_evidence": 1
+      },
+      "mean_key_fact_recall": 0.914,
+      "all_key_facts_present": 0.897,
+      "forbidden_fact_answers": [],
+      "citation_hit_rate": 1.0,
+      "mean_citation_precision": 0.948,
+      "missed_facts": {
+        "a10": "1/2",
+        "a12": "0/1",
+        "a22": "0/2"
+      }
+    },
+    "unanswerable": {
+      "questions": 7,
+      "correct_handoffs": 7,
+      "handoff_rate": 1.0,
+      "answered_anyway": [],
+      "u06_either_status": "insufficient_evidence"
+    },
+    "faithfulness": {
+      "sentences": 80,
+      "sentences_with_citation": 50,
+      "uncited_sentences": 30,
+      "nli_supported_rate": 0.62,
+      "llm_supported_rate": 0.78,
+      "judges_agree_rate": 0.84,
+      "both_judges_unsupported": [
+        {
+          "id": "a03",
+          "sentence": "You can reset your password during this time, and the new password will work once the lock is lifted."
+        },
+        {
+          "id": "a03",
+          "sentence": "If you need assistance, feel free to contact support."
+        },
+        {
+          "id": "a07",
+          "sentence": "If you need further assistance, feel free to contact support."
+        },
+        {
+          "id": "a10",
+          "sentence": "If you need further assistance, feel free to contact our support team."
+        },
+        {
+          "id": "a19",
+          "sentence": "If these steps don't help, check your internet speed; HD requires at least 5 Mbps and 4K needs at least 25 Mbps."
+        },
+        {
+          "id": "a21",
+          "sentence": "Try signing out and signing back in to refresh your session."
+        },
+        {
+          "id": "a22",
+          "sentence": "Turning off your VPN and restarting the app should resolve the issue."
+        },
+        {
+          "id": "a22",
+          "sentence": "If the problem persists, try signing out and signing back in to refresh your account information."
+        },
+        {
+          "id": "a24",
+          "sentence": "Your 2018 Samsung TV should be able to run StreamNest, as it supports Samsung smart TVs from 2020 onwards."
+        },
+        {
+          "id": "a24",
+          "sentence": "If you encounter any issues, signing out and signing back in might help."
+        },
+        {
+          "id": "a27",
+          "sentence": "To permanently delete your StreamNest account, first cancel any active paid subscription."
+        }
+      ],
+      "disagreements": [
+        {
+          "id": "a07",
+          "sentence": "If your card gets declined, you will still have full access to your plan during a 7-day grace period.",
+          "nli": false,
+          "llm": true
+        },
+        {
+          "id": "a10",
+          "sentence": "Yes, you can request a refund since you subscribed 10 days ago and watched less than 2 hours of content.",
+          "nli": false,
+          "llm": true
+        },
+        {
+          "id": "a14",
+          "sentence": "If you upgrade in the middle of the month, you will be charged a prorated amount for the remaining days of the current billing period.",
+          "nli": false,
+          "llm": true
+        },
+        {
+          "id": "a18",
+          "sentence": "Yes, your watch history is kept for 10 months after cancelling your subscription.",
+          "nli": false,
+          "llm": true
+        },
+        {
+          "id": "a20",
+          "sentence": "Close and reopen the app, then try playing the video again.",
+          "nli": false,
+          "llm": true
+        },
+        {
+          "id": "a20",
+          "sentence": "If the issue persists, clear the app cache (Android: Settings > Apps > StreamNest > Storage > Clear cache; iOS: delete and reinstall the app) and ensure you are using the latest app version.",
+          "nli": false,
+          "llm": true
+        },
+        {
+          "id": "a26",
+          "sentence": "Yes, you can download movies to watch on a plane if you have a Premium subscription.",
+          "nli": false,
+          "llm": true
+        },
+        {
+          "id": "a30",
+          "sentence": "If you are worried about your account security, consider enabling two-step verification.",
+          "nli": false,
+          "llm": true
+        }
+      ]
+    },
+    "latency": {
+      "llm_calls": 32,
+      "mean_ms": 4224,
+      "median_ms": 4129,
+      "max_ms": 7702
+    }
+  },
+  "items": [
+    {
+      "id": "a01",
+      "query": "My subscription payment went through but I still can't use the premium features",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "Premium features usually unlock within 5 minutes of payment [S1]. First, sign out and sign back in to refresh your plan status. Then, check Settings > Plan to confirm the plan shown is Premium and that you are signed in to the same account you paid with. If the plan still shows Basic or Plus after 30 minutes, contact support with your invoice number or app-store order ID so an agent can manually sync the entitlement [S1].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 892,
+        "output_tokens": 121,
+        "latency_ms": 7702
+      },
+      "seconds": 7.72,
+      "cited_docs": [
+        "subscription-plans"
+      ],
+      "best_similarity": 0.7481,
+      "facts_found": "2/2",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "Premium features usually unlock within 5 minutes of payment.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.993,
+          "llm_supported": true
+        },
+        {
+          "sentence": "First, sign out and sign back in to refresh your plan status.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "Then, check Settings > Plan to confirm the plan shown is Premium and that you are signed in to the same account you paid with.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "If the plan still shows Basic or Plus after 30 minutes, contact support with your invoice number or app-store order ID so an agent can manually sync the entitlement.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.946,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a02",
+      "query": "I forgot my password and the reset email never showed up",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "On the sign-in screen, select 'Forgot password' and enter the email address on your account. A reset link valid for 60 minutes is sent to that address. If the email does not arrive within 10 minutes, check your spam or promotions folder. Each new request invalidates earlier reset links, so always use the most recent email [S1].",
+      "warnings": [
+        "Excluded outdated document refund-policy-2024 (replaced by refund-policy-2026)."
+      ],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 915,
+        "output_tokens": 103,
+        "latency_ms": 4606
+      },
+      "seconds": 4.62,
+      "cited_docs": [
+        "account-login-troubleshooting"
+      ],
+      "best_similarity": 0.775,
+      "facts_found": "1/1",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "On the sign-in screen, select 'Forgot password' and enter the email address on your account.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "A reset link valid for 60 minutes is sent to that address.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "If the email does not arrive within 10 minutes, check your spam or promotions folder.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "Each new request invalidates earlier reset links, so always use the most recent email.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.984,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a03",
+      "query": "It says my account is locked after I typed the wrong password a few times",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "Your account is locked after 5 incorrect password attempts within 15 minutes for security reasons [S1]. The lock will automatically lift after 30 minutes. You can reset your password during this time, and the new password will work once the lock is lifted [S2]. If you need assistance, feel free to contact support [S1].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 899,
+        "output_tokens": 104,
+        "latency_ms": 4608
+      },
+      "seconds": 4.62,
+      "cited_docs": [
+        "account-login-troubleshooting"
+      ],
+      "best_similarity": 0.6372,
+      "facts_found": "1/1",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "Your account is locked after 5 incorrect password attempts within 15 minutes for security reasons.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.99,
+          "llm_supported": true
+        },
+        {
+          "sentence": "The lock will automatically lift after 30 minutes.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "You can reset your password during this time, and the new password will work once the lock is lifted.",
+          "cited": [
+            "S2"
+          ],
+          "nli_supported": false,
+          "nli_entailment": 0.001,
+          "llm_supported": false
+        },
+        {
+          "sentence": "If you need assistance, feel free to contact support.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": false,
+          "nli_entailment": 0.005,
+          "llm_supported": false
+        }
+      ]
+    },
+    {
+      "id": "a04",
+      "query": "I lost my phone and can't get the two-factor login code",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "To regain access, try using one of the backup codes provided when you set up two-step verification [S1]. If you've lost both your backup codes and your phone, contact support for assistance. An agent will need to verify your identity using the account email, the last four digits of your payment card, and the date of the most recent charge before two-step verification can be disabled [S1].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 924,
+        "output_tokens": 110,
+        "latency_ms": 4886
+      },
+      "seconds": 4.9,
+      "cited_docs": [
+        "account-login-troubleshooting"
+      ],
+      "best_similarity": 0.573,
+      "facts_found": "1/1",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "To regain access, try using one of the backup codes provided when you set up two-step verification.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.994,
+          "llm_supported": true
+        },
+        {
+          "sentence": "If you've lost both your backup codes and your phone, contact support for assistance.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "An agent will need to verify your identity using the account email, the last four digits of your payment card, and the date of the most recent charge before two-step verification can be disabled.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.997,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a05",
+      "query": "How do I change the email address on my account?",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "To change your email address, go to Settings > Account > Email and enter the new address. A confirmation link is sent to the new address and a notification is sent to the old one. The change takes effect only after the confirmation link is clicked. If you no longer have access to the old address, support can update the email after identity verification [S1].",
+      "warnings": [
+        "Excluded outdated document refund-policy-2024 (replaced by refund-policy-2026)."
+      ],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 856,
+        "output_tokens": 102,
+        "latency_ms": 4538
+      },
+      "seconds": 4.55,
+      "cited_docs": [
+        "account-login-troubleshooting"
+      ],
+      "best_similarity": 0.6974,
+      "facts_found": "2/2",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "To change your email address, go to Settings > Account > Email and enter the new address.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "A confirmation link is sent to the new address and a notification is sent to the old one.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "The change takes effect only after the confirmation link is clicked.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "If you no longer have access to the old address, support can update the email after identity verification.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.983,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a06",
+      "query": "I was billed two times this month for the same plan",
+      "expect": "answer",
+      "status": "insufficient_evidence",
+      "answer": "Thank you for contacting StreamNest support. We couldn't find documentation that fully answers your question, so a support specialist will review your request and get back to you.",
+      "warnings": [
+        "Model reported missing information: no reason given"
+      ],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 863,
+        "output_tokens": 90,
+        "latency_ms": 4029
+      },
+      "seconds": 4.04,
+      "cited_docs": [],
+      "best_similarity": 0.5142
+    },
+    {
+      "id": "a07",
+      "query": "My card got declined, will I lose access to my shows?",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "If your card gets declined, you will still have full access to your plan during a 7-day grace period [S2]. After that, your account may move to StreamNest Basic until a valid payment method is added. If you need further assistance, feel free to contact support [S2].",
+      "warnings": [
+        "Excluded outdated document refund-policy-2024 (replaced by refund-policy-2026)."
+      ],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 894,
+        "output_tokens": 90,
+        "latency_ms": 4031
+      },
+      "seconds": 4.04,
+      "cited_docs": [
+        "billing-payments"
+      ],
+      "best_similarity": 0.3952,
+      "facts_found": "1/1",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "If your card gets declined, you will still have full access to your plan during a 7-day grace period.",
+          "cited": [
+            "S2"
+          ],
+          "nli_supported": false,
+          "nli_entailment": 0.171,
+          "llm_supported": true
+        },
+        {
+          "sentence": "After that, your account may move to StreamNest Basic until a valid payment method is added.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "If you need further assistance, feel free to contact support.",
+          "cited": [
+            "S2"
+          ],
+          "nli_supported": false,
+          "nli_entailment": 0.001,
+          "llm_supported": false
+        }
+      ]
+    },
+    {
+      "id": "a08",
+      "query": "Which payment options do you accept? Can I pay with UPI?",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "StreamNest accepts Visa, Mastercard, American Express, PayPal, and UPI in India for payments [S1]. You can use UPI to pay for your subscription [S1].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 882,
+        "output_tokens": 68,
+        "latency_ms": 3350
+      },
+      "seconds": 3.37,
+      "cited_docs": [
+        "billing-payments"
+      ],
+      "best_similarity": 0.4916,
+      "facts_found": "2/2",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "StreamNest accepts Visa, Mastercard, American Express, PayPal, and UPI in India for payments.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.989,
+          "llm_supported": true
+        },
+        {
+          "sentence": "You can use UPI to pay for your subscription.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.992,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a09",
+      "query": "Where can I download an invoice for my last payment?",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "You can download your invoice from Settings > Billing > Invoice history [S1]. If you have any issues, feel free to reach out to support for assistance.",
+      "warnings": [
+        "Excluded outdated document refund-policy-2024 (replaced by refund-policy-2026)."
+      ],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 938,
+        "output_tokens": 60,
+        "latency_ms": 2923
+      },
+      "seconds": 2.93,
+      "cited_docs": [
+        "billing-payments"
+      ],
+      "best_similarity": 0.5163,
+      "facts_found": "1/1",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "You can download your invoice from Settings > Billing > Invoice history.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.993,
+          "llm_supported": true
+        },
+        {
+          "sentence": "If you have any issues, feel free to reach out to support for assistance.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        }
+      ]
+    },
+    {
+      "id": "a10",
+      "query": "Can I get my money back? I subscribed 10 days ago and barely watched anything",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "Yes, you can request a refund since you subscribed 10 days ago and watched less than 2 hours of content [S1]. To request a refund, go to your account settings and select the option to request a refund. If you need further assistance, feel free to contact our support team [S1].",
+      "warnings": [
+        "Excluded outdated document refund-policy-2024 (replaced by refund-policy-2026)."
+      ],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 919,
+        "output_tokens": 93,
+        "latency_ms": 4204
+      },
+      "seconds": 4.22,
+      "cited_docs": [
+        "refund-policy-2026"
+      ],
+      "best_similarity": 0.5166,
+      "facts_found": "1/2",
+      "fact_recall": 0.5,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "Yes, you can request a refund since you subscribed 10 days ago and watched less than 2 hours of content.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": false,
+          "nli_entailment": 0.028,
+          "llm_supported": true
+        },
+        {
+          "sentence": "To request a refund, go to your account settings and select the option to request a refund.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "If you need further assistance, feel free to contact our support team.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": false,
+          "nli_entailment": 0.001,
+          "llm_supported": false
+        }
+      ]
+    },
+    {
+      "id": "a11",
+      "query": "How long does a refund take to show up on my card?",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "Approved refunds are returned to the original payment method. Card and PayPal refunds take 5 to 10 business days to appear; UPI refunds usually appear within 3 business days [S1].",
+      "warnings": [
+        "Excluded outdated document refund-policy-2024 (replaced by refund-policy-2026)."
+      ],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 781,
+        "output_tokens": 69,
+        "latency_ms": 3132
+      },
+      "seconds": 3.14,
+      "cited_docs": [
+        "refund-policy-2026"
+      ],
+      "best_similarity": 0.6804,
+      "facts_found": "1/1",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "Approved refunds are returned to the original payment method.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "Card and PayPal refunds take 5 to 10 business days to appear; UPI refunds usually appear within 3 business days.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.965,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a12",
+      "query": "I bought the subscription through the Apple App Store and want a refund",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "To request a refund, please contact help@streamnest.example and include your account email and the invoice number from Settings > Billing > Invoice history. Since you purchased through the Apple App Store, the refund must be processed by Apple under their policy [S1].",
+      "warnings": [
+        "Excluded outdated document refund-policy-2024 (replaced by refund-policy-2026)."
+      ],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 892,
+        "output_tokens": 81,
+        "latency_ms": 3781
+      },
+      "seconds": 3.8,
+      "cited_docs": [
+        "refund-policy-2026"
+      ],
+      "best_similarity": 0.7226,
+      "facts_found": "0/1",
+      "fact_recall": 0.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "To request a refund, please contact help@streamnest.example and include your account email and the invoice number from Settings > Billing > Invoice history.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "Since you purchased through the Apple App Store, the refund must be processed by Apple under their policy.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.934,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a13",
+      "query": "What is the difference between Plus and Premium and how much do they cost?",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "StreamNest Plus costs 7.99 USD per month with no adverts, 1080p quality and 2 screens at a time [S1]. StreamNest Premium costs 12.99 USD per month with no adverts, 4K HDR quality, 4 screens at a time and offline downloads on up to 6 devices [S1].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 983,
+        "output_tokens": 107,
+        "latency_ms": 5005
+      },
+      "seconds": 5.02,
+      "cited_docs": [
+        "subscription-plans"
+      ],
+      "best_similarity": 0.5139,
+      "facts_found": "2/2",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "StreamNest Plus costs 7.99 USD per month with no adverts, 1080p quality and 2 screens at a time.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.982,
+          "llm_supported": true
+        },
+        {
+          "sentence": "StreamNest Premium costs 12.99 USD per month with no adverts, 4K HDR quality, 4 screens at a time and offline downloads on up to 6 devices.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.973,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a14",
+      "query": "If I upgrade in the middle of the month, how am I charged?",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "If you upgrade in the middle of the month, you will be charged a prorated amount for the remaining days of the current billing period [S1]. Your billing date does not change [S2].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 916,
+        "output_tokens": 75,
+        "latency_ms": 3529
+      },
+      "seconds": 3.54,
+      "cited_docs": [
+        "billing-payments",
+        "subscription-plans"
+      ],
+      "best_similarity": 0.6951,
+      "facts_found": "1/1",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 0.5,
+      "sentences": [
+        {
+          "sentence": "If you upgrade in the middle of the month, you will be charged a prorated amount for the remaining days of the current billing period.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": false,
+          "nli_entailment": 0.003,
+          "llm_supported": true
+        },
+        {
+          "sentence": "Your billing date does not change.",
+          "cited": [
+            "S2"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.988,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a15",
+      "query": "When does the free trial start charging me?",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "The free trial starts charging on day 8 if not cancelled, provided a payment method is entered during sign-up [S1].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 933,
+        "output_tokens": 55,
+        "latency_ms": 2765
+      },
+      "seconds": 2.79,
+      "cited_docs": [
+        "subscription-plans"
+      ],
+      "best_similarity": 0.7006,
+      "facts_found": "1/1",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "The free trial starts charging on day 8 if not cancelled, provided a payment method is entered during sign-up.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.991,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a16",
+      "query": "How do I cancel my subscription?",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "To cancel your subscription, go to Settings > Plan > Cancel subscription and confirm. You will keep paid features until the end of your current billing period, after which the account will switch to StreamNest Basic. This does not delete your account, profiles, or watch history [S1].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 818,
+        "output_tokens": 87,
+        "latency_ms": 3973
+      },
+      "seconds": 3.99,
+      "cited_docs": [
+        "cancellation-guide"
+      ],
+      "best_similarity": 0.78,
+      "facts_found": "2/2",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "To cancel your subscription, go to Settings > Plan > Cancel subscription and confirm.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "You will keep paid features until the end of your current billing period, after which the account will switch to StreamNest Basic.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "This does not delete your account, profiles, or watch history.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.99,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a17",
+      "query": "Can I take a break from my plan for a couple of months without cancelling?",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "Yes, you can pause your subscription for 1, 2 or 3 months from Settings > Plan > Pause. No charges are made during this time, and the account uses StreamNest Basic. The subscription resumes automatically on the selected date, and the billing date moves to the resume date [S2].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 795,
+        "output_tokens": 92,
+        "latency_ms": 4029
+      },
+      "seconds": 4.05,
+      "cited_docs": [
+        "cancellation-guide"
+      ],
+      "best_similarity": 0.5936,
+      "facts_found": "2/2",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "Yes, you can pause your subscription for 1, 2 or 3 months from Settings > Plan > Pause.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "No charges are made during this time, and the account uses StreamNest Basic.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "The subscription resumes automatically on the selected date, and the billing date moves to the resume date.",
+          "cited": [
+            "S2"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.988,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a18",
+      "query": "If I come back after cancelling, is my watch history still there?",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "Yes, your watch history is kept for 10 months after cancelling your subscription [S1]. When you restart your plan, your profiles and watch history will be available [S1].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 793,
+        "output_tokens": 67,
+        "latency_ms": 3053
+      },
+      "seconds": 3.06,
+      "cited_docs": [
+        "cancellation-guide"
+      ],
+      "best_similarity": 0.6452,
+      "facts_found": "1/1",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "Yes, your watch history is kept for 10 months after cancelling your subscription.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": false,
+          "nli_entailment": 0.097,
+          "llm_supported": true
+        },
+        {
+          "sentence": "When you restart your plan, your profiles and watch history will be available.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.986,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a19",
+      "query": "Videos keep buffering and look blurry on my TV",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "To improve your video quality, try moving closer to your Wi-Fi router, using a wired connection, pausing other downloads, or setting a fixed quality under Settings > Playback > Video quality [S1]. If these steps don't help, check your internet speed; HD requires at least 5 Mbps and 4K needs at least 25 Mbps [S1].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 917,
+        "output_tokens": 104,
+        "latency_ms": 4661
+      },
+      "seconds": 4.68,
+      "cited_docs": [
+        "playback-troubleshooting"
+      ],
+      "best_similarity": 0.6183,
+      "facts_found": "2/2",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "To improve your video quality, try moving closer to your Wi-Fi router, using a wired connection, pausing other downloads, or setting a fixed quality under Settings > Playback > Video quality.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.993,
+          "llm_supported": true
+        },
+        {
+          "sentence": "If these steps don't help, check your internet speed; HD requires at least 5 Mbps and 4K needs at least 25 Mbps.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": false,
+          "nli_entailment": 0.032,
+          "llm_supported": false
+        }
+      ]
+    },
+    {
+      "id": "a20",
+      "query": "Getting error SN-1001 when I press play",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "Close and reopen the app, then try playing the video again [S1]. If the issue persists, clear the app cache (Android: Settings > Apps > StreamNest > Storage > Clear cache; iOS: delete and reinstall the app) and ensure you are using the latest app version [S1].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 927,
+        "output_tokens": 91,
+        "latency_ms": 4236
+      },
+      "seconds": 4.25,
+      "cited_docs": [
+        "playback-troubleshooting"
+      ],
+      "best_similarity": 0.6984,
+      "facts_found": "2/2",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "Close and reopen the app, then try playing the video again.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": false,
+          "nli_entailment": 0.037,
+          "llm_supported": true
+        },
+        {
+          "sentence": "If the issue persists, clear the app cache (Android: Settings > Apps > StreamNest > Storage > Clear cache; iOS: delete and reinstall the app) and ensure you are using the latest app version.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": false,
+          "nli_entailment": 0.114,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a21",
+      "query": "SN-2003 error in Chrome",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "This error [S1] suggests that your browser or device might need an update. Ensure you are using the latest version of Chrome, and check that 'Play protected content' is enabled. If you are trying to stream 4K content, make sure your display supports HDCP 2.2. Try signing out and signing back in to refresh your session [S1].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 943,
+        "output_tokens": 105,
+        "latency_ms": 5307
+      },
+      "seconds": 5.33,
+      "cited_docs": [
+        "playback-troubleshooting"
+      ],
+      "best_similarity": 0.5794,
+      "facts_found": "1/1",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "This error  suggests that your browser or device might need an update.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.988,
+          "llm_supported": true
+        },
+        {
+          "sentence": "Ensure you are using the latest version of Chrome, and check that 'Play protected content' is enabled.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "If you are trying to stream 4K content, make sure your display supports HDCP 2.2.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "Try signing out and signing back in to refresh your session.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": false,
+          "nli_entailment": 0.002,
+          "llm_supported": false
+        }
+      ]
+    },
+    {
+      "id": "a22",
+      "query": "A show I was watching disappeared after I turned on my VPN",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "Turning off your VPN and restarting the app should resolve the issue [S2]. If the problem persists, try signing out and signing back in to refresh your account information [S1].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 854,
+        "output_tokens": 70,
+        "latency_ms": 3330
+      },
+      "seconds": 3.35,
+      "cited_docs": [
+        "general-faq",
+        "playback-troubleshooting"
+      ],
+      "best_similarity": 0.4392,
+      "facts_found": "0/2",
+      "fact_recall": 0.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "Turning off your VPN and restarting the app should resolve the issue.",
+          "cited": [
+            "S2"
+          ],
+          "nli_supported": false,
+          "nli_entailment": 0.001,
+          "llm_supported": false
+        },
+        {
+          "sentence": "If the problem persists, try signing out and signing back in to refresh your account information.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": false,
+          "nli_entailment": 0.002,
+          "llm_supported": false
+        }
+      ]
+    },
+    {
+      "id": "a23",
+      "query": "The sound is out of sync with the picture",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "Restart the playback first. If the issue persists, try turning off audio enhancement or surround modes on your smart TV or soundbar, and set the TV's audio output to PCM. If the problem only occurs with one title, report it through the player's 'Report a problem' menu so the content team can check that file [S1].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 966,
+        "output_tokens": 98,
+        "latency_ms": 4637
+      },
+      "seconds": 4.65,
+      "cited_docs": [
+        "playback-troubleshooting"
+      ],
+      "best_similarity": 0.5215,
+      "facts_found": "1/1",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "Restart the playback first.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "If the issue persists, try turning off audio enhancement or surround modes on your smart TV or soundbar, and set the TV's audio output to PCM.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "If the problem only occurs with one title, report it through the player's 'Report a problem' menu so the content team can check that file.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.963,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a24",
+      "query": "Does StreamNest work on my 2018 Samsung TV?",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "Your 2018 Samsung TV should be able to run StreamNest, as it supports Samsung smart TVs from 2020 onwards [S1]. However, please note that older devices may not receive updates or support [S1]. If you encounter any issues, signing out and signing back in might help [S1].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 918,
+        "output_tokens": 98,
+        "latency_ms": 4557
+      },
+      "seconds": 4.57,
+      "cited_docs": [
+        "devices-and-apps"
+      ],
+      "best_similarity": 0.6343,
+      "facts_found": "1/1",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "Your 2018 Samsung TV should be able to run StreamNest, as it supports Samsung smart TVs from 2020 onwards.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": false,
+          "nli_entailment": 0.132,
+          "llm_supported": false
+        },
+        {
+          "sentence": "However, please note that older devices may not receive updates or support.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.983,
+          "llm_supported": true
+        },
+        {
+          "sentence": "If you encounter any issues, signing out and signing back in might help.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": false,
+          "nli_entailment": 0.005,
+          "llm_supported": false
+        }
+      ]
+    },
+    {
+      "id": "a25",
+      "query": "It says too many people are using my account",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "This message usually appears when too many devices are streaming your account simultaneously. Stop playback on another device or upgrade your plan [S1]. If you need to sign out devices, go to Settings > Security > Sign out of all devices and then change your password [S1].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 919,
+        "output_tokens": 84,
+        "latency_ms": 3956
+      },
+      "seconds": 3.97,
+      "cited_docs": [
+        "devices-and-apps"
+      ],
+      "best_similarity": 0.5058,
+      "facts_found": "2/2",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "This message usually appears when too many devices are streaming your account simultaneously.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "Stop playback on another device or upgrade your plan.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.994,
+          "llm_supported": true
+        },
+        {
+          "sentence": "If you need to sign out devices, go to Settings > Security > Sign out of all devices and then change your password.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.998,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a26",
+      "query": "Can I download movies to watch on a plane?",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "Yes, you can download movies to watch on a plane if you have a Premium subscription [S4]. However, downloads are only available on phones and tablets, and each Premium account can keep downloads on up to 6 devices with a maximum of 100 titles per device. Downloads expire after 30 days or 48 hours after starting to watch, and must be renewed while online [S4].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 863,
+        "output_tokens": 113,
+        "latency_ms": 5077
+      },
+      "seconds": 5.09,
+      "cited_docs": [
+        "devices-and-apps"
+      ],
+      "best_similarity": 0.3978,
+      "facts_found": "2/2",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "Yes, you can download movies to watch on a plane if you have a Premium subscription.",
+          "cited": [
+            "S4"
+          ],
+          "nli_supported": false,
+          "nli_entailment": 0.002,
+          "llm_supported": true
+        },
+        {
+          "sentence": "However, downloads are only available on phones and tablets, and each Premium account can keep downloads on up to 6 devices with a maximum of 100 titles per device.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "Downloads expire after 30 days or 48 hours after starting to watch, and must be renewed while online.",
+          "cited": [
+            "S4"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.993,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a27",
+      "query": "I want to permanently delete my StreamNest account",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "To permanently delete your StreamNest account, first cancel any active paid subscription [S2]. Then go to Settings > Privacy > Delete account [S1]. Confirm the deletion, and your account will be deactivated immediately and permanently deleted after 30 days. Billing records will be kept for 7 years where required by tax law [S1].",
+      "warnings": [
+        "Excluded outdated document refund-policy-2024 (replaced by refund-policy-2026)."
+      ],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 877,
+        "output_tokens": 103,
+        "latency_ms": 4756
+      },
+      "seconds": 4.77,
+      "cited_docs": [
+        "cancellation-guide",
+        "privacy-and-data"
+      ],
+      "best_similarity": 0.5889,
+      "facts_found": "2/2",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 0.5,
+      "sentences": [
+        {
+          "sentence": "To permanently delete your StreamNest account, first cancel any active paid subscription.",
+          "cited": [
+            "S2"
+          ],
+          "nli_supported": false,
+          "nli_entailment": 0.002,
+          "llm_supported": false
+        },
+        {
+          "sentence": "Then go to Settings > Privacy > Delete account.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.987,
+          "llm_supported": true
+        },
+        {
+          "sentence": "Confirm the deletion, and your account will be deactivated immediately and permanently deleted after 30 days.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "Billing records will be kept for 7 years where required by tax law.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.99,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a28",
+      "query": "How can I get a copy of all the data you have about me?",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "To get a copy of your data, go to Settings > Privacy > Download my data. The export will include your profile details, viewing history, ratings, and billing history, and will be sent to you via email as a download link within 7 days. The link will expire after 14 days [S1].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 849,
+        "output_tokens": 94,
+        "latency_ms": 4403
+      },
+      "seconds": 4.43,
+      "cited_docs": [
+        "privacy-and-data"
+      ],
+      "best_similarity": 0.6268,
+      "facts_found": "2/2",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "To get a copy of your data, go to Settings > Privacy > Download my data.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "The export will include your profile details, viewing history, ratings, and billing history, and will be sent to you via email as a download link within 7 days.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "The link will expire after 14 days.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.997,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a29",
+      "query": "What hours is live chat support available?",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "Live chat support is available 24 hours a day for Premium members and from 08:00 to 22:00 (UTC) for other members [S1].",
+      "warnings": [
+        "Excluded outdated document refund-policy-2024 (replaced by refund-policy-2026)."
+      ],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 934,
+        "output_tokens": 68,
+        "latency_ms": 3335
+      },
+      "seconds": 3.35,
+      "cited_docs": [
+        "general-faq"
+      ],
+      "best_similarity": 0.5348,
+      "facts_found": "2/2",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 1.0,
+      "sentences": [
+        {
+          "sentence": "Live chat support is available 24 hours a day for Premium members and from 08:00 to 22:00 (UTC) for other members.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.958,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "a30",
+      "query": "Someone messaged me pretending to be support and asked for my password",
+      "expect": "answer",
+      "status": "grounded",
+      "answer": "That is concerning. Support agents never ask for your password. If you received such a message, report it to security@streamnest.example [S1]. If you are worried about your account security, consider enabling two-step verification [S5].",
+      "warnings": [],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 913,
+        "output_tokens": 82,
+        "latency_ms": 3855
+      },
+      "seconds": 3.88,
+      "cited_docs": [
+        "account-login-troubleshooting",
+        "privacy-and-data"
+      ],
+      "best_similarity": 0.4523,
+      "facts_found": "2/2",
+      "fact_recall": 1.0,
+      "forbidden_found": [],
+      "citation_hit": true,
+      "citation_precision": 0.5,
+      "sentences": [
+        {
+          "sentence": "That is concerning.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "Support agents never ask for your password.",
+          "cited": [],
+          "nli_supported": null,
+          "nli_entailment": null
+        },
+        {
+          "sentence": "If you received such a message, report it to security@streamnest.example.",
+          "cited": [
+            "S1"
+          ],
+          "nli_supported": true,
+          "nli_entailment": 0.994,
+          "llm_supported": true
+        },
+        {
+          "sentence": "If you are worried about your account security, consider enabling two-step verification.",
+          "cited": [
+            "S5"
+          ],
+          "nli_supported": false,
+          "nli_entailment": 0.006,
+          "llm_supported": true
+        }
+      ]
+    },
+    {
+      "id": "u01",
+      "query": "Do you sell gift cards I can give to a friend for their birthday?",
+      "expect": "handoff",
+      "status": "insufficient_evidence",
+      "answer": "Thank you for contacting StreamNest support. We couldn't find documentation that fully answers your question, so a support specialist will review your request and get back to you.",
+      "warnings": [
+        "Best chunk similarity 0.15 < threshold 0.35: the knowledge base probably does not cover this question."
+      ],
+      "llm": null,
+      "seconds": 0.08,
+      "cited_docs": [],
+      "best_similarity": 0.1515
+    },
+    {
+      "id": "u02",
+      "query": "Is there a student discount?",
+      "expect": "handoff",
+      "status": "insufficient_evidence",
+      "answer": "Thank you for contacting StreamNest support. We couldn't find documentation that fully answers your question, so a support specialist will review your request and get back to you.",
+      "warnings": [
+        "Best chunk similarity 0.31 < threshold 0.35: the knowledge base probably does not cover this question."
+      ],
+      "llm": null,
+      "seconds": 0.01,
+      "cited_docs": [],
+      "best_similarity": 0.3073
+    },
+    {
+      "id": "u03",
+      "query": "Where can I buy a StreamNest t-shirt or hoodie?",
+      "expect": "handoff",
+      "status": "insufficient_evidence",
+      "answer": "Thank you for contacting StreamNest support. We couldn't find documentation that fully answers your question, so a support specialist will review your request and get back to you.",
+      "warnings": [
+        "Best chunk similarity 0.33 < threshold 0.35: the knowledge base probably does not cover this question."
+      ],
+      "llm": null,
+      "seconds": 0.02,
+      "cited_docs": [],
+      "best_similarity": 0.3348
+    },
+    {
+      "id": "u04",
+      "query": "Are you hiring software engineers? How do I apply for a job?",
+      "expect": "handoff",
+      "status": "insufficient_evidence",
+      "answer": "Thank you for contacting StreamNest support. We couldn't find documentation that fully answers your question, so a support specialist will review your request and get back to you.",
+      "warnings": [
+        "Best chunk similarity 0.13 < threshold 0.35: the knowledge base probably does not cover this question."
+      ],
+      "llm": null,
+      "seconds": 0.01,
+      "cited_docs": [],
+      "best_similarity": 0.1283
+    },
+    {
+      "id": "u05",
+      "query": "What time does the football match air on your TV channel tonight?",
+      "expect": "handoff",
+      "status": "insufficient_evidence",
+      "answer": "Thank you for contacting StreamNest support. We couldn't find documentation that fully answers your question, so a support specialist will review your request and get back to you.",
+      "warnings": [
+        "Best chunk similarity 0.33 < threshold 0.35: the knowledge base probably does not cover this question."
+      ],
+      "llm": null,
+      "seconds": 0.01,
+      "cited_docs": [],
+      "best_similarity": 0.3257
+    },
+    {
+      "id": "u06",
+      "query": "Can I pay with Bitcoin or other cryptocurrency?",
+      "expect": "either",
+      "status": "insufficient_evidence",
+      "answer": "Thank you for contacting StreamNest support. We couldn't find documentation that fully answers your question, so a support specialist will review your request and get back to you.",
+      "warnings": [
+        "Model reported missing information: no reason given"
+      ],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 943,
+        "output_tokens": 105,
+        "latency_ms": 4863
+      },
+      "seconds": 4.88,
+      "cited_docs": [],
+      "best_similarity": 0.3904
+    },
+    {
+      "id": "u07",
+      "query": "Do you have a referral program that gives free months for inviting friends?",
+      "expect": "handoff",
+      "status": "insufficient_evidence",
+      "answer": "Thank you for contacting StreamNest support. We couldn't find documentation that fully answers your question, so a support specialist will review your request and get back to you.",
+      "warnings": [
+        "Model reported missing information: no reason given"
+      ],
+      "llm": {
+        "provider": "ollama",
+        "model": "qwen2.5:7b",
+        "attempts": 1,
+        "input_tokens": 869,
+        "output_tokens": 87,
+        "latency_ms": 4054
+      },
+      "seconds": 4.06,
+      "cited_docs": [],
+      "best_similarity": 0.3749
+    },
+    {
+      "id": "u08",
+      "query": "My laptop battery drains fast and the fan is loud",
+      "expect": "handoff",
+      "status": "insufficient_evidence",
+      "answer": "Thank you for contacting StreamNest support. We couldn't find documentation that fully answers your question, so a support specialist will review your request and get back to you.",
+      "warnings": [
+        "Best chunk similarity 0.16 < threshold 0.35: the knowledge base probably does not cover this question."
+      ],
+      "llm": null,
+      "seconds": 0.01,
+      "cited_docs": [],
+      "best_similarity": 0.1642
+    }
+  ]
+}

@@ -8,6 +8,7 @@ httpx2==2.16.2              # calls the Ollama REST API; also used by FastAPI's 
 
 # ---- Testing (Phase 2) ----
 pytest==9.2.0               # test runner
+pytest-cov==7.1.0           # measures which lines the tests execute (coverage)
 
 # ---- RAG pipeline (Phase 3) ----
 sentence-transformers==6.3.0  # pretrained neural embedding models (pulls in PyTorch + transformers)
