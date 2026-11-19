@@ -10,6 +10,7 @@ router = APIRouter(tags=["health"])
 def health(request: Request) -> dict:
     settings = get_settings()
     retriever = getattr(request.app.state, "retriever", None)
+    llm = getattr(request.app.state, "llm", None)
     return {
         "status": "ok",
         "app": settings.app_name,
@@ -19,4 +20,10 @@ def health(request: Request) -> dict:
         # this flag tells you whether retrieval will work.
         "rag_index_loaded": retriever is not None,
         "indexed_chunks": len(retriever.store.chunks) if retriever else 0,
+        # For Ollama this makes a quick request to check the server + model.
+        "llm": {
+            "provider": llm.provider if llm else None,
+            "model": llm.model if llm else None,
+            "available": llm.is_available() if llm else False,
+        },
     }

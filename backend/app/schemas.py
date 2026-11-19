@@ -33,6 +33,14 @@ class Conflict(BaseModel):
     current_doc_retrieved: bool
 
 
+class RetrievalSummary(BaseModel):
+    evidence_sufficient: bool
+    best_similarity: float
+    threshold: float
+    reason: str
+    conflicts: list[Conflict]
+
+
 class RetrieveResponse(BaseModel):
     query: str
     mode: str
@@ -42,3 +50,41 @@ class RetrieveResponse(BaseModel):
     reason: str
     conflicts: list[Conflict]
     chunks: list[EvidenceChunk]
+
+
+# ---------- Answer generation (Phase 4) ----------
+class AnswerRequest(BaseModel):
+    query: str = Field(min_length=3, max_length=4000,
+                       examples=["My subscription payment was successful, but I still cannot access the premium features."])
+    top_k: int = Field(default=5, ge=1, le=10)
+
+
+class CitationOut(BaseModel):
+    source_id: str
+    chunk_id: str
+    doc_id: str
+    title: str
+    section: str
+    text: str
+    similarity: float
+    outdated: bool
+
+
+class LLMInfo(BaseModel):
+    provider: str
+    model: str
+    attempts: int
+    input_tokens: int | None = None
+    output_tokens: int | None = None
+    latency_ms: int | None = None
+
+
+class AnswerResponse(BaseModel):
+    status: str
+    answer: str
+    citations: list[CitationOut]
+    warnings: list[str]
+    llm_called: bool
+    llm: LLMInfo | None
+    sources_sent: list[str]
+    retrieval: RetrievalSummary

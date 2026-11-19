@@ -27,6 +27,30 @@ class FakeEmbedder:
         return vectors / np.where(norms == 0, 1.0, norms)
 
 
+class FakeLLM:
+    """Scripted LLM: returns the given replies in order (or raises given exceptions)."""
+
+    provider = "fake"
+    model = "fake-llm"
+
+    def __init__(self, *replies):
+        self.replies = list(replies)
+        self.calls = []  # (system, user) for every call, so tests can inspect prompts
+
+    def generate(self, system, user, json_schema):
+        from app.llm.base import LLMResult
+
+        self.calls.append((system, user))
+        reply = self.replies.pop(0)
+        if isinstance(reply, Exception):
+            raise reply
+        return LLMResult(content=reply, provider=self.provider, model=self.model,
+                         input_tokens=100, output_tokens=20, latency_ms=5)
+
+    def is_available(self):
+        return True
+
+
 def make_chunk(doc_id: str, section: str, text: str, superseded_by: str | None = None) -> Chunk:
     return Chunk(
         chunk_id=f"{doc_id}::{section}::0", doc_id=doc_id, title=doc_id, section=section,

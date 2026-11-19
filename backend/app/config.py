@@ -5,6 +5,7 @@ Values in a `.env` file (or real environment variables) override the defaults.
 """
 from functools import lru_cache
 from pathlib import Path
+from typing import Literal
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -37,6 +38,14 @@ class Settings(BaseSettings):
     # Minimum cosine similarity of the best chunk to count as "enough evidence".
     # Chosen from the retrieval evaluation (eval/run_retrieval_eval.py).
     min_evidence_similarity: float = 0.35
+
+    # ---- LLM generation (Phase 4) ----
+    llm_provider: Literal["mock", "ollama"] = "mock"   # env var: LLM_PROVIDER
+    ollama_base_url: str = "http://localhost:11434"
+    ollama_model: str = "qwen2.5:7b"
+    ollama_context_tokens: int = 8192   # our prompts are ~1-2k tokens; leaves headroom
+    llm_timeout_seconds: float = 120.0  # first call also loads the model into memory
+    llm_max_retries: int = 1            # extra attempts when the reply is not valid JSON
 
     @property
     def cors_origin_list(self) -> list[str]:
