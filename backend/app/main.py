@@ -17,6 +17,27 @@ logger = logging.getLogger("uvicorn.error")
 settings = get_settings()
 
 
+def load_triager(retriever):
+    """Load the Phase 6 models if they were trained; otherwise fall back gracefully."""
+    from app.ml.classifier import TicketClassifier
+    from app.ml.escalation_model import EscalationModel
+    from app.services.triage import Triager
+
+    classifier = escalation = None
+    try:
+        classifier = TicketClassifier.load(settings.classifier_path)
+        logger.info("Ticket classifier loaded (%s)", classifier.metadata.get("model"))
+    except (FileNotFoundError, RuntimeError) as exc:
+        logger.warning("Ticket classifier NOT loaded: %s", exc)
+    try:
+        escalation = EscalationModel.load(settings.escalation_model_path)
+        logger.info("Escalation model loaded (threshold %.2f)", escalation.threshold)
+    except (FileNotFoundError, RuntimeError) as exc:
+        logger.warning("Escalation model NOT loaded, using keyword rules only: %s", exc)
+    # Reuse the RAG embedder: same model, already in memory.
+    return Triager(classifier, escalation, retriever.embedder if retriever else None)
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Runs once at startup (before `yield`) and once at shutdown (after it).
@@ -43,6 +64,8 @@ async def lifespan(app: FastAPI):
     except (FileNotFoundError, RuntimeError) as exc:
         app.state.retriever = None
         logger.warning("RAG index NOT loaded: %s", exc)
+
+    app.state.triager = load_triager(app.state.retriever)
     yield
     engine.dispose()  # shutdown: close pooled database connections cleanly
 

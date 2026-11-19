@@ -1,0 +1,205 @@
+{
+  "dataset": {
+    "total": 250,
+    "train": 200,
+    "test": 50,
+    "seed": 42
+  },
+  "baseline_cv_macro_f1": 0.0667,
+  "cv_macro_f1": {
+    "naive_bayes_word": {
+      "mean": 0.6717,
+      "std": 0.0411
+    },
+    "logreg_word": {
+      "mean": 0.7122,
+      "std": 0.0339
+    },
+    "logreg_word_char": {
+      "mean": 0.79,
+      "std": 0.025
+    }
+  },
+  "chosen_model": "logreg_word_char",
+  "test": {
+    "accuracy": 0.74,
+    "macro_f1": 0.7399,
+    "per_class": {
+      "account_access": {
+        "precision": 0.7777777777777778,
+        "recall": 0.7,
+        "f1-score": 0.7368421052631579,
+        "support": 10.0
+      },
+      "billing_payment": {
+        "precision": 0.7272727272727273,
+        "recall": 0.8,
+        "f1-score": 0.7619047619047619,
+        "support": 10.0
+      },
+      "subscription": {
+        "precision": 0.7777777777777778,
+        "recall": 0.7,
+        "f1-score": 0.7368421052631579,
+        "support": 10.0
+      },
+      "technical_issue": {
+        "precision": 0.6666666666666666,
+        "recall": 0.8,
+        "f1-score": 0.7272727272727273,
+        "support": 10.0
+      },
+      "general_inquiry": {
+        "precision": 0.7777777777777778,
+        "recall": 0.7,
+        "f1-score": 0.7368421052631579,
+        "support": 10.0
+      },
+      "accuracy": 0.74,
+      "macro avg": {
+        "precision": 0.7454545454545454,
+        "recall": 0.74,
+        "f1-score": 0.7399407609933927,
+        "support": 50.0
+      },
+      "weighted avg": {
+        "precision": 0.7454545454545455,
+        "recall": 0.74,
+        "f1-score": 0.7399407609933926,
+        "support": 50.0
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "account_access",
+        "billing_payment",
+        "subscription",
+        "technical_issue",
+        "general_inquiry"
+      ],
+      "rows_true": [
+        [
+          7,
+          0,
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          8,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          2,
+          7,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          8,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          7
+        ]
+      ]
+    },
+    "selective": {
+      "threshold": 0.45,
+      "confident_share": 0.7,
+      "accuracy_when_confident": 0.8857,
+      "accuracy_when_low_confidence": 0.4
+    },
+    "misclassified": [
+      {
+        "text": "I can't receive SMS codes while travelling abroad",
+        "true": "account_access",
+        "predicted": "general_inquiry",
+        "confidence": 0.387
+      },
+      {
+        "text": "I'd like to resubscribe, do I get my old price back?",
+        "true": "subscription",
+        "predicted": "billing_payment",
+        "confidence": 0.61
+      },
+      {
+        "text": "When is my next billing date?",
+        "true": "billing_payment",
+        "predicted": "technical_issue",
+        "confidence": 0.263
+      },
+      {
+        "text": "Are new movies added every week?",
+        "true": "general_inquiry",
+        "predicted": "technical_issue",
+        "confidence": 0.529
+      },
+      {
+        "text": "How do I clear the cache in the app",
+        "true": "technical_issue",
+        "predicted": "subscription",
+        "confidence": 0.309
+      },
+      {
+        "text": "The backup codes for two-factor don't work",
+        "true": "account_access",
+        "predicted": "technical_issue",
+        "confidence": 0.299
+      },
+      {
+        "text": "How do I remove a profile from my account",
+        "true": "general_inquiry",
+        "predicted": "billing_payment",
+        "confidence": 0.369
+      },
+      {
+        "text": "does the free trial need a credit card",
+        "true": "subscription",
+        "predicted": "billing_payment",
+        "confidence": 0.428
+      },
+      {
+        "text": "Content blocked in my country even though it was available last week",
+        "true": "technical_issue",
+        "predicted": "account_access",
+        "confidence": 0.344
+      },
+      {
+        "text": "Your cancellation page is broken and I'm being forced to keep paying, I will report this to consumer court",
+        "true": "subscription",
+        "predicted": "general_inquiry",
+        "confidence": 0.272
+      },
+      {
+        "text": "Can I change my billing date to the 1st of the month",
+        "true": "billing_payment",
+        "predicted": "subscription",
+        "confidence": 0.628
+      },
+      {
+        "text": "I need my account and all my data erased, I've asked twice and nobody responded",
+        "true": "general_inquiry",
+        "predicted": "account_access",
+        "confidence": 0.419
+      },
+      {
+        "text": "Login page keeps loading forever on chrome",
+        "true": "account_access",
+        "predicted": "technical_issue",
+        "confidence": 0.582
+      }
+    ]
+  }
+}

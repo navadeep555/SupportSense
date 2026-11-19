@@ -31,7 +31,13 @@ class Ticket(Base):
     customer_email: Mapped[str | None] = mapped_column(String(254))
     # Lifecycle: open -> drafted -> resolved (rejecting a draft sends it back to open)
     status: Mapped[str] = mapped_column(String(20), default="open", index=True)
-    category: Mapped[str | None] = mapped_column(String(50))  # filled by the Phase 6 classifier
+    # ---- Triage (Phase 6), computed once from the masked text at creation ----
+    category: Mapped[str | None] = mapped_column(String(50), index=True)  # None if no classifier
+    category_confidence: Mapped[float | None]
+    category_low_confidence: Mapped[bool] = mapped_column(default=False)
+    escalated: Mapped[bool] = mapped_column(default=False, index=True)
+    escalation_score: Mapped[float | None]
+    escalation_reasons: Mapped[list] = mapped_column(JSON, default=list)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow,
                                                  onupdate=utcnow)

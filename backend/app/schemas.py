@@ -116,6 +116,11 @@ class TicketOut(BaseModel):
     customer_email: str | None
     status: str
     category: str | None
+    category_confidence: float | None
+    category_low_confidence: bool
+    escalated: bool
+    escalation_score: float | None
+    escalation_reasons: list[str]
     created_at: datetime
     updated_at: datetime
 

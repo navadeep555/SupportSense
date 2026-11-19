@@ -4,6 +4,8 @@ from collections.abc import Iterator
 from fastapi import HTTPException, Request, status
 from sqlalchemy.orm import Session
 
+from app.services.triage import Triager
+
 
 def get_db(request: Request) -> Iterator[Session]:
     """Give each request its own session and always close it afterwards.
@@ -17,3 +19,8 @@ def get_db(request: Request) -> Iterator[Session]:
         raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, "Database not initialised.")
     with factory() as session:
         yield session
+
+
+def get_triager(request: Request) -> Triager:
+    """The triager built at startup, or a rules-only one if no models were loaded."""
+    return getattr(request.app.state, "triager", None) or Triager()

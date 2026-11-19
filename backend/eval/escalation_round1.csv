@@ -1,0 +1,25 @@
+id,text,escalate
+h01,"My account was compromised overnight and the recovery email is now someone else's",1
+h02,"Somebody bought a Premium upgrade on my account without asking me",1
+h03,"I see a payment I never made on my statement from you",1
+h04,"I'm going to dispute this transaction with my credit card company",1
+h05,"You took money from my account two times in one day",1
+h06,"I have emailed support four times now with zero reply",1
+h07,"If this isn't fixed I'm taking legal action",1
+h08,"Your company is violating my privacy rights and I'll complain to the regulator",1
+h09,"My password was reset by someone who is not me",1
+h10,"I contacted you last week and the week before and nobody has helped",1
+h11,"I was billed again after cancelling, refund me now",1
+h12,"Someone logged into my profile from Brazil",1
+h13,"I have an issue with subtitles on my TV",0
+h14,"This is my second time using the app, how do I find kids shows?",0
+h15,"I was charged the correct amount, just need the invoice",0
+h16,"No reply needed, just letting you know the new app looks great",0
+h17,"What does the error code mean when it says 'not me' button?",0
+h18,"My kids keep hacking away at the remote and changing settings, can I lock them?",0
+h19,"Is there a fraud warning feature for my card in the app?",0
+h20,"I want to cancel my subscription at the end of the month",0
+h21,"How long is the waiting period for a refund to appear?",0
+h22,"Can I watch the police drama series on Basic?",0
+h23,"Where do I see payments to StreamNest in my history?",0
+h24,"Login takes a long time on slow internet",0

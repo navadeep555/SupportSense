@@ -1,0 +1,84 @@
+{
+  "chosen": {
+    "C": 10.0,
+    "threshold": 0.4,
+    "cv_on_development": {
+      "precision": 0.611,
+      "recall": 0.917,
+      "tp": 33,
+      "fp": 21,
+      "fn": 3
+    }
+  },
+  "sets": {
+    "synthetic (development)": {
+      "rules": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 24,
+        "fp": 0,
+        "fn": 0
+      },
+      "semantic": {
+        "precision": 0.828,
+        "recall": 1.0,
+        "tp": 24,
+        "fp": 5,
+        "fn": 0
+      },
+      "rules_or_semantic": {
+        "precision": 0.828,
+        "recall": 1.0,
+        "tp": 24,
+        "fp": 5,
+        "fn": 0
+      }
+    },
+    "round1 (development)": {
+      "rules": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 12,
+        "fp": 0,
+        "fn": 0
+      },
+      "semantic": {
+        "precision": 0.923,
+        "recall": 1.0,
+        "tp": 12,
+        "fp": 1,
+        "fn": 0
+      },
+      "rules_or_semantic": {
+        "precision": 0.923,
+        "recall": 1.0,
+        "tp": 12,
+        "fp": 1,
+        "fn": 0
+      }
+    },
+    "HOLDOUT": {
+      "rules": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "tp": 0,
+        "fp": 2,
+        "fn": 12
+      },
+      "semantic": {
+        "precision": 0.786,
+        "recall": 0.917,
+        "tp": 11,
+        "fp": 3,
+        "fn": 1
+      },
+      "rules_or_semantic": {
+        "precision": 0.733,
+        "recall": 0.917,
+        "tp": 11,
+        "fp": 4,
+        "fn": 1
+      }
+    }
+  }
+}

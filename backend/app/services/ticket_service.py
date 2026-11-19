@@ -18,6 +18,7 @@ from app.rag.retriever import Retriever
 from app.services.answer_service import generate_draft
 from app.services.edit_distance import edit_ratio, strip_citation_markers
 from app.services.pii import mask_pii
+from app.services.triage import Triager
 
 
 class NotFoundError(Exception):
@@ -36,12 +37,19 @@ def merge_counts(*counts: dict[str, int]) -> dict[str, int]:
     return total
 
 
-def create_ticket(db: Session, subject: str, body: str, customer_email: str | None) -> Ticket:
+def create_ticket(db: Session, subject: str, body: str, customer_email: str | None,
+                  triager: Triager | None = None) -> Ticket:
     subject_mask, body_mask = mask_pii(subject), mask_pii(body)
+    # Triage reads the masked text only; a rules-only Triager is used if none is given.
+    t = (triager or Triager()).triage(f"{subject_mask.text}. {body_mask.text}")
     ticket = Ticket(subject=subject, body=body,
                     subject_masked=subject_mask.text, body_masked=body_mask.text,
                     pii_found=merge_counts(subject_mask.found, body_mask.found),
-                    customer_email=customer_email)
+                    customer_email=customer_email,
+                    category=t.category, category_confidence=t.category_confidence,
+                    category_low_confidence=t.category_low_confidence,
+                    escalated=t.escalated, escalation_score=t.escalation_score,
+                    escalation_reasons=t.escalation_reasons)
     db.add(ticket)
     db.commit()  # INSERT happens here; ticket.id is filled in afterwards
     return ticket

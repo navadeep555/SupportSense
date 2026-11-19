@@ -1,0 +1,251 @@
+id,text,category,escalate
+t001,"I forgot my password and the reset email never arrives",account_access,0
+t002,"cant login, it says my account is locked",account_access,0
+t003,"Someone changed my password and email, I can't get into my account anymore. I think I was hacked",account_access,1
+t004,"The 2-step verification code isn't coming to my phone",account_access,0
+t005,"How do I change the email address on my account?",account_access,0
+t006,"app keeps signing me out every few hours on my phone",account_access,0
+t007,"Reset link says expired every time I click it",account_access,0
+t008,"i typed wrong password many times now locked out pls help",account_access,0
+t009,"There are logins from another country in my account activity that are not me",account_access,1
+t010,"lost my phone so I can't get the verification code to sign in",account_access,0
+t011,"My account shows profiles I didn't create and my password no longer works, someone else is using it",account_access,1
+t012,"Sign in button does nothing on the website",account_access,0
+t013,"I want to update my login email because I no longer use my old work email",account_access,0
+t014,"Got logged out of the TV app randomly yesterday and now it asks for a code",account_access,0
+t015,"Password reset mail is going to an email I don't have access to anymore",account_access,0
+t016,"Is there a way to sign in without the authenticator app? I changed phones",account_access,0
+t017,"account locked how long do I have to wait",account_access,0
+t018,"I keep getting 'incorrect password' even though I just reset it",account_access,0
+t019,"Received an email saying my password was changed but I didn't do it",account_access,1
+t020,"can't log in with google sign in anymore",account_access,0
+t021,"Login page keeps loading forever on chrome",account_access,0
+t022,"my kid changed the password and now we're all locked out",account_access,0
+t023,"Why do I have to sign in again on every device after changing my password?",account_access,0
+t024,"the verification code says invalid every time i enter it",account_access,0
+t025,"This is the third time I am writing about not being able to log in and nobody has replied",account_access,1
+t026,"How do I turn off two step verification",account_access,0
+t027,"forgot which email i used to sign up",account_access,0
+t028,"Logged out on all devices suddenly, did you reset accounts?",account_access,0
+t029,"I can't receive SMS codes while travelling abroad",account_access,0
+t030,"pasword reset not working plz fix",account_access,0
+t031,"Someone in another city is watching on my account and I never shared it, they also changed my email",account_access,1
+t032,"How can I see which devices are signed in to my account?",account_access,0
+t033,"Account says it is locked after only two attempts",account_access,0
+t034,"Getting error that this email is already in use when I try to change my email",account_access,0
+t035,"I want to sign out of my account on my old phone that I sold",account_access,0
+t036,"Can I log in with my phone number instead of email?",account_access,0
+t037,"it says too many attempts try later, what does that mean",account_access,0
+t038,"My login stopped working after I changed my email yesterday",account_access,0
+t039,"The backup codes for two-factor don't work",account_access,0
+t040,"Unable to access account, reset password email lands in spam?",account_access,0
+t041,"login problem on smart tv, code on screen expires before I can enter it",account_access,0
+t042,"I'm being asked to verify my identity but the code never comes",account_access,0
+t043,"pls unlock my account i need it urgently tonight",account_access,0
+t044,"How often do I need to reset my password",account_access,0
+t045,"my wife and I share account, she changed password, how do I get access back",account_access,0
+t046,"Signed in but it shows someone else's profile and watch history",account_access,1
+t047,"Forgot password link opens a blank page",account_access,0
+t048,"authenticator app was deleted, how do I get back in",account_access,0
+t049,"I changed my email but confirmation link never arrived",account_access,0
+t050,"unable to sign in, says account does not exist but i have been paying for months",account_access,0
+t051,"I was charged twice for this month's subscription",billing_payment,1
+t052,"My card got declined when I tried to pay",billing_payment,0
+t053,"How do I update my credit card details?",billing_payment,0
+t054,"Can I pay with UPI?",billing_payment,0
+t055,"I want a refund, I subscribed by mistake yesterday",billing_payment,0
+t056,"How long does a refund take to show in my bank account?",billing_payment,0
+t057,"When is my next billing date?",billing_payment,0
+t058,"Where can I download my invoice for last month?",billing_payment,0
+t059,"There is a charge from StreamNest on my card that I don't recognise",billing_payment,1
+t060,"Why was I charged tax on my subscription?",billing_payment,0
+t061,"payment failed but money got deducted from my account",billing_payment,1
+t062,"Can I get a refund for the annual plan I bought 3 days ago?",billing_payment,0
+t063,"I bought through the Apple app store, how do I get my money back",billing_payment,0
+t064,"the price in my invoice is in dollars but I live in India",billing_payment,0
+t065,"I will file a chargeback with my bank if this charge is not reversed today",billing_payment,1
+t066,"Refund requested 10 days ago still not received",billing_payment,0
+t067,"Do you accept PayPal?",billing_payment,0
+t068,"Why did my payment method get removed?",billing_payment,0
+t069,"How do I remove my old card from my account",billing_payment,0
+t070,"I was charged after I cancelled, I want my money back",billing_payment,1
+t071,"my debit card expired, how to add a new one",billing_payment,0
+t072,"Is a refund possible if I watched only one episode?",billing_payment,0
+t073,"Bank statement shows 3 payments to StreamNest this month",billing_payment,1
+t074,"Can I get a GST invoice for my company",billing_payment,0
+t075,"Payment keeps failing with error 'transaction declined'",billing_payment,0
+t076,"why is my bill higher this month",billing_payment,0
+t077,"refund for premium upgrade i didnt want",billing_payment,0
+t078,"Can I change my billing date to the 1st of the month",billing_payment,0
+t079,"The auto-renewal charged me even though I turned it off, this is fraud",billing_payment,1
+t080,"how do I request a refund",billing_payment,0
+t081,"I paid with a gift voucher but it was not applied",billing_payment,0
+t082,"Prepaid card not accepted, what cards work?",billing_payment,0
+t083,"I need the invoices for the whole of 2025 for my tax filing",billing_payment,0
+t084,"Refund was approved but the amount is less than what I paid",billing_payment,0
+t085,"Why is there a 1 rupee charge on my card",billing_payment,0
+t086,"My payment is stuck in pending for 2 days",billing_payment,0
+t087,"I'm not eligible for a refund? I only signed up last week",billing_payment,0
+t088,"Charged in euros instead of rupees",billing_payment,0
+t089,"Will I get a receipt by email after paying?",billing_payment,0
+t090,"I reported this double charge two weeks ago and still no response",billing_payment,1
+t091,"can you refund to a different card, my old card is closed",billing_payment,0
+t092,"What happens if my payment fails, will I lose access immediately?",billing_payment,0
+t093,"netbanking payment option is missing",billing_payment,0
+t094,"please refund my last month, I didn't use the service at all",billing_payment,0
+t095,"My company card was charged by mistake, need to move billing to personal card",billing_payment,0
+t096,"Where do I see my payment history",billing_payment,0
+t097,"I'm contacting my lawyer about these repeated unauthorized charges",billing_payment,1
+t098,"Refund still not credited after 14 days",billing_payment,0
+t099,"Why do I see two pending authorisations on my card",billing_payment,0
+t100,"how to get money back for subscription bought on google play",billing_payment,0
+t101,"I paid for Premium but still don't have Premium features",subscription,0
+t102,"How do I cancel my subscription?",subscription,0
+t103,"What is the difference between Basic and Premium?",subscription,0
+t104,"Can I pause my subscription for two months while I travel?",subscription,0
+t105,"How do I upgrade to the Premium plan?",subscription,0
+t106,"I want to downgrade to Basic from next month",subscription,0
+t107,"does the free trial need a credit card",subscription,0
+t108,"my free trial ended and now I'm charged, can I cancel",subscription,0
+t109,"How many screens can I watch on with the Standard plan?",subscription,0
+t110,"Want to rejoin after cancelling last year, will my profiles still be there?",subscription,0
+t111,"cancel my account right now, I've asked three times already and it's still active",subscription,1
+t112,"Upgraded to premium an hour ago, 4K still not showing",subscription,0
+t113,"Is there a student plan?",subscription,0
+t114,"If I cancel today, can I still watch until the end of the month?",subscription,0
+t115,"how do i switch from monthly to yearly plan",subscription,0
+t116,"Do you have a family plan",subscription,0
+t117,"I cancelled but I still see my subscription as active",subscription,0
+t118,"What happens to my downloads if I downgrade?",subscription,0
+t119,"plan shows basic even though i bought premium",subscription,0
+t120,"Can I get another free trial on a new account?",subscription,0
+t121,"how much is premium per month",subscription,0
+t122,"Does Premium include offline downloads?",subscription,0
+t123,"I want to stop auto renewal",subscription,0
+t124,"where is the cancel button, cant find it in the app",subscription,0
+t125,"Can I change plans in the middle of the billing cycle?",subscription,0
+t126,"pause option is missing from my settings",subscription,0
+t127,"Premium features disappeared after the app update",subscription,0
+t128,"Is there an ad-free plan?",subscription,0
+t129,"How do I end my free trial before it charges me",subscription,0
+t130,"Can two people use one Basic plan at the same time",subscription,0
+t131,"Plan upgrade did not apply on my TV but works on phone",subscription,0
+t132,"I'd like to resubscribe, do I get my old price back?",subscription,0
+t133,"what's included in the standard plan",subscription,0
+t134,"I keep being told to upgrade even though I'm on Premium already",subscription,0
+t135,"cancel subscription before renewal tomorrow please",subscription,0
+t136,"Your cancellation page is broken and I'm being forced to keep paying, I will report this to consumer court",subscription,1
+t137,"Does the yearly plan give a discount?",subscription,0
+t138,"Can I share my premium plan with my parents in another city?",subscription,0
+t139,"how to reactivate a paused subscription early",subscription,0
+t140,"Downgrade to basic but keep my watch history?",subscription,0
+t141,"trial says 7 days but I only got 3",subscription,0
+t142,"I bought Premium, logged out and in again, still shows Basic after a whole day",subscription,0
+t143,"What plan do I need for 4K?",subscription,0
+t144,"Can I cancel through the website instead of the app?",subscription,0
+t145,"will i lose premium immediately if i downgrade",subscription,0
+t146,"Is there a mobile-only plan cheaper than basic",subscription,0
+t147,"my subscription was cancelled automatically without my permission",subscription,0
+t148,"How do I check which plan I am on",subscription,0
+t149,"I have been waiting a week for someone to fix my premium access, nobody answers",subscription,1
+t150,"can i gift a subscription to my friend",subscription,0
+t151,"Video keeps buffering even though my internet is fast",technical_issue,0
+t152,"Getting error SN-2003 on my laptop when I play anything",technical_issue,0
+t153,"SN-1001 error on my smart TV",technical_issue,0
+t154,"The audio is out of sync with the video",technical_issue,0
+t155,"This title is not available in your region error SN-4040",technical_issue,0
+t156,"App crashes as soon as I open it on Android",technical_issue,0
+t157,"Which smart TVs are supported?",technical_issue,0
+t158,"Downloads disappeared from my phone",technical_issue,0
+t159,"Video quality is very low, stuck at 480p",technical_issue,0
+t160,"It says too many screens are streaming but nobody else is watching",technical_issue,0
+t161,"how do I update the app on my firestick",technical_issue,0
+t162,"Black screen with sound only on chrome",technical_issue,0
+t163,"subtitles are not syncing",technical_issue,0
+t164,"Can I download movies on my laptop?",technical_issue,0
+t165,"The app won't install on my old iPad",technical_issue,0
+t166,"Playback stops every 10 minutes",technical_issue,0
+t167,"error sn2003 on firefox",technical_issue,0
+t168,"Screen mirroring to my TV shows a black screen",technical_issue,0
+t169,"4K option is greyed out",technical_issue,0
+t170,"App is stuck on the loading screen",technical_issue,0
+t171,"Download limit reached, how many devices can have downloads",technical_issue,0
+t172,"sound is very low on some movies",technical_issue,0
+t173,"the video freezes but audio continues",technical_issue,0
+t174,"my downloaded episodes expired while I was on a flight",technical_issue,0
+t175,"Is there an app for Windows?",technical_issue,0
+t176,"HDCP error when playing on external monitor",technical_issue,0
+t177,"Roku app keeps restarting",technical_issue,0
+t178,"Every show buffers at the start for 30 seconds",technical_issue,0
+t179,"Playback failed to start, tried restarting twice",technical_issue,0
+t180,"picture is very dark on HDR content",technical_issue,0
+t181,"Can't cast from my phone to chromecast",technical_issue,0
+t182,"App says device not supported on my Linux PC",technical_issue,0
+t183,"VPN off but still getting region error",technical_issue,0
+t184,"Can't find the episode I was watching yesterday, it says unavailable",technical_issue,0
+t185,"streaming is very slow on wifi but fine on mobile data",technical_issue,0
+t186,"the app logged me out and now videos don't load",technical_issue,0
+t187,"Subtitles missing in Hindi",technical_issue,0
+t188,"Error code SN-1001 every time on PS5",technical_issue,0
+t189,"Video player controls are not responding on the website",technical_issue,0
+t190,"Downloads fail at 99 percent",technical_issue,0
+t191,"Getting a message to disable screen recording but I'm not recording",technical_issue,0
+t192,"Nothing loads in the app, just a spinning wheel",technical_issue,0
+t193,"Video won't load on any device since this morning",technical_issue,0
+t194,"Lip sync issue on bluetooth headphones",technical_issue,0
+t195,"TV app shows error after the latest update",technical_issue,0
+t196,"Videos look pixelated on my 4K TV",technical_issue,0
+t197,"Your app has been broken for a week, this is the fourth time I'm reporting it",technical_issue,1
+t198,"How do I clear the cache in the app",technical_issue,0
+t199,"playback error on safari mac",technical_issue,0
+t200,"Content blocked in my country even though it was available last week",technical_issue,0
+t201,"What is StreamNest?",general_inquiry,0
+t202,"How can I contact customer support?",general_inquiry,0
+t203,"What languages are available?",general_inquiry,0
+t204,"Is StreamNest available in Canada?",general_inquiry,0
+t205,"How do I download all the data you have about me?",general_inquiry,0
+t206,"I want to delete my account permanently",general_inquiry,0
+t207,"How do I delete my viewing history?",general_inquiry,0
+t208,"What information can your support agents see about me?",general_inquiry,0
+t209,"Is there a phone number I can call?",general_inquiry,0
+t210,"What are your chat support hours?",general_inquiry,0
+t211,"Is StreamNest down right now?",general_inquiry,0
+t212,"Do you have anime?",general_inquiry,0
+t213,"Can I request a movie to be added?",general_inquiry,0
+t214,"Under GDPR I demand a copy of all my personal data within 30 days",general_inquiry,1
+t215,"How do I create a profile for my kids?",general_inquiry,0
+t216,"Do you sell my data to advertisers?",general_inquiry,0
+t217,"Which countries is StreamNest available in?",general_inquiry,0
+t218,"Do you have content in Tamil?",general_inquiry,0
+t219,"How long do you keep my data after I delete my account?",general_inquiry,0
+t220,"I think my personal data was leaked from your service, I'm reporting this to the data protection authority",general_inquiry,1
+t221,"Is there a StreamNest app for kids?",general_inquiry,0
+t222,"Are you hiring?",general_inquiry,0
+t223,"Do you have a referral program?",general_inquiry,0
+t224,"Can I restore my account after deleting it?",general_inquiry,0
+t225,"Where can I check service status?",general_inquiry,0
+t226,"Why do some shows disappear from the catalogue?",general_inquiry,0
+t227,"Do you offer an email address for complaints?",general_inquiry,0
+t228,"How do I remove a profile from my account",general_inquiry,0
+t229,"Is my viewing history shared with anyone?",general_inquiry,0
+t230,"can i change the app language to hindi",general_inquiry,0
+t231,"What is your privacy policy on cookies?",general_inquiry,0
+t232,"Do you have live sports?",general_inquiry,0
+t233,"Is there a parental control option",general_inquiry,0
+t234,"How quickly does support reply to emails?",general_inquiry,0
+t235,"When will season 2 of my show be released?",general_inquiry,0
+t236,"Can I watch StreamNest while travelling to Europe?",general_inquiry,0
+t237,"Do you have audio description for visually impaired users?",general_inquiry,0
+t238,"Is there a way to give feedback about the app?",general_inquiry,0
+t239,"Who owns StreamNest?",general_inquiry,0
+t240,"Do you sell merchandise?",general_inquiry,0
+t241,"I need my account and all my data erased, I've asked twice and nobody responded",general_inquiry,1
+t242,"Are new movies added every week?",general_inquiry,0
+t243,"Can I talk to a human please",general_inquiry,0
+t244,"Is StreamNest free?",general_inquiry,0
+t245,"Where are your offices located?",general_inquiry,0
+t246,"How can I see what data is stored in my profile?",general_inquiry,0
+t247,"Does StreamNest work in China?",general_inquiry,0
+t248,"Do you have documentaries?",general_inquiry,0
+t249,"My child's information is in the account, how is it protected?",general_inquiry,0
+t250,"My lawyer will contact you regarding misuse of my personal information",general_inquiry,1

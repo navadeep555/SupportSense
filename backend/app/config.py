@@ -53,6 +53,11 @@ class Settings(BaseSettings):
     #   postgresql+psycopg://user:password@host:5432/supportsense
     database_url: str = f"sqlite:///{(DATA_DIR / 'supportsense.db').as_posix()}"
 
+    # ---- Ticket classifier (Phase 6) ----
+    tickets_dataset: Path = DATA_DIR / "tickets" / "synthetic_tickets.csv"
+    classifier_path: Path = DATA_DIR / "models" / "ticket_classifier.joblib"  # built by app.ml.train
+    escalation_model_path: Path = DATA_DIR / "models" / "escalation_model.joblib"  # app.ml.train_escalation
+
     @property
     def cors_origin_list(self) -> list[str]:
         """'a, b' -> ['a', 'b'] (blank entries removed)."""

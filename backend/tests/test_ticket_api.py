@@ -25,8 +25,9 @@ def client():
     app.state.retriever = Retriever(store, embedder, min_similarity=0.3)
     app.state.session_factory = init_db(create_db_engine("sqlite://"))  # fresh, empty DB per test
     app.state.llm = FakeLLM(*[reply("Premium unlocks within 5 minutes [S1]. Sign out and in [S1].")] * 5)
+    app.state.triager = None  # -> rules-only Triager (see deps.get_triager)
     yield TestClient(app)
-    app.state.retriever = app.state.session_factory = app.state.llm = None
+    app.state.retriever = app.state.session_factory = app.state.llm = app.state.triager = None
 
 
 def new_ticket(client, body="I paid but premium is not unlocked after payment", **extra):
@@ -151,6 +152,48 @@ def test_draft_metrics(client):
     assert m["approval_rate"] == 0.333 and m["acceptance_rate"] == 0.667
     assert m["avg_edit_ratio_when_edited"] > 0
     assert m["avg_llm_latency_ms"] == 5.0
+
+
+class FixedTriager:
+    """Pretends to be the ML triager: billing tickets mentioning 'lawyer' are escalated."""
+
+    def triage(self, text):
+        from app.services.triage import Triage
+        escalated = "lawyer" in text
+        return Triage(category="billing_payment", category_confidence=0.9, escalated=escalated,
+                      escalation_score=0.8 if escalated else 0.1,
+                      escalation_reasons=["semantic: test"] if escalated else [])
+
+
+def test_triage_is_stored_on_masked_text_and_queue_puts_escalations_first(client):
+    seen = []
+
+    class SpyTriager(FixedTriager):
+        def triage(self, text):
+            seen.append(text)
+            return super().triage(text)
+
+    app.state.triager = SpyTriager()
+    calm = new_ticket(client, body="Where is my invoice? call 9876543210")
+    urgent = new_ticket(client, body="My lawyer will contact you about this charge")
+    later = new_ticket(client, body="Another invoice question")
+
+    assert "9876543210" not in seen[0] and "[PHONE]" in seen[0]        # models never see raw PII
+    assert calm["category"] == "billing_payment" and calm["category_confidence"] == 0.9
+    assert urgent["escalated"] and urgent["escalation_reasons"] == ["semantic: test"]
+
+    queue = client.get("/api/tickets").json()["items"]
+    assert [t["id"] for t in queue] == [urgent["id"], later["id"], calm["id"]]
+    assert client.get("/api/tickets", params={"escalated": True}).json()["total"] == 1
+    assert client.get("/api/tickets", params={"category": "billing_payment"}).json()["total"] == 3
+    assert client.get("/api/tickets", params={"category": "nonsense"}).status_code == 422
+
+
+def test_without_models_rules_still_escalate(client):
+    t = new_ticket(client, body="This is fraud, I will file a chargeback")
+    assert t["category"] is None and t["escalated"] is True
+    assert t["escalation_score"] is None
+    assert any(r.startswith("financial_dispute") for r in t["escalation_reasons"])
 
 
 def test_knowledge_gap_report(client):
