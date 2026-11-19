@@ -20,6 +20,7 @@ def health(request: Request) -> dict:
         # this flag tells you whether retrieval will work.
         "rag_index_loaded": retriever is not None,
         "indexed_chunks": len(retriever.store.chunks) if retriever else 0,
+        "database_ready": getattr(request.app.state, "session_factory", None) is not None,
         # For Ollama this makes a quick request to check the server + model.
         "llm": {
             "provider": llm.provider if llm else None,

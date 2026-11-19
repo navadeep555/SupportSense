@@ -17,4 +17,7 @@ numpy==2.5.5                  # arrays of vectors (also a dependency of the abov
 # Note: pip installs the CPU build of PyTorch (torch 2.15.0+cpu), which is enough
 # for embedding a few hundred short chunks.
 
-# Later phases will add: sqlalchemy, scikit-learn (each explained when added).
+# ---- Database (Phase 5) ----
+sqlalchemy==2.1.9            # ORM: Python classes <-> SQL tables; works with SQLite and PostgreSQL
+
+# Later phases will add: scikit-learn (explained when added).

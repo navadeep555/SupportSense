@@ -47,6 +47,12 @@ class Settings(BaseSettings):
     llm_timeout_seconds: float = 120.0  # first call also loads the model into memory
     llm_max_retries: int = 1            # extra attempts when the reply is not valid JSON
 
+    # ---- Database (Phase 5) ----
+    # SQLite = one file, no server to install. Phase 9 switches to PostgreSQL by
+    # changing only this URL (env var DATABASE_URL), e.g.
+    #   postgresql+psycopg://user:password@host:5432/supportsense
+    database_url: str = f"sqlite:///{(DATA_DIR / 'supportsense.db').as_posix()}"
+
     @property
     def cors_origin_list(self) -> list[str]:
         """'a, b' -> ['a', 'b'] (blank entries removed)."""

@@ -15,6 +15,7 @@ from app.llm.base import LLMClient, LLMError
 from app.llm.prompts import ANSWER_SCHEMA, SYSTEM_PROMPT, LLMAnswer, build_user_prompt
 from app.rag.retriever import RetrievalResult, RetrievedChunk, Retriever
 from app.services.citations import validate_citations
+from app.services.pii import mask_pii
 
 HANDOFF_REPLY = (
     "Thank you for contacting StreamNest support. We couldn't find documentation that fully "
@@ -44,39 +45,54 @@ class DraftResult:
     sources_sent: list[str] = field(default_factory=list)  # chunk_ids shown to the LLM
     llm_called: bool = False
     llm: dict | None = None  # provider, model, tokens, latency, attempts
+    pii_masked: dict[str, int] = field(default_factory=dict)  # what was hidden from retrieval + LLM
 
 
-def select_sources(result: RetrievalResult) -> tuple[list[RetrievedChunk], list[str]]:
-    """Drop outdated chunks when the document that replaced them was also retrieved.
+def select_sources(result: RetrievalResult, top_k: int) -> tuple[list[RetrievedChunk], list[str]]:
+    """Pick the top_k chunks to send to the LLM.
 
-    Doing this in code (not only via a prompt rule) means a small model can't
-    accidentally quote the old refund window.
+    1. Drop outdated chunks when the document that replaced them was also
+       retrieved. Doing this in code (not only via a prompt rule) means a small
+       model can't accidentally quote the old refund window.
+    2. THEN cut to top_k, so current chunks fill the freed slots.
+    3. Warn about an outdated document only if it is actually being sent.
     """
-    warnings = []
-    drop = set()
+    notes, drop = [], set()
     for conflict in result.conflicts:
         if conflict["current_doc_retrieved"]:
             drop.add(conflict["outdated_doc_id"])
-            warnings.append(f"Excluded outdated document {conflict['outdated_doc_id']} "
-                            f"(replaced by {conflict['current_doc_id']}).")
-        else:
-            warnings.append(f"Only the outdated document {conflict['outdated_doc_id']} was retrieved; "
-                            f"its replacement {conflict['current_doc_id']} was not. Check the policy manually.")
-    kept = [rc for rc in result.chunks if rc.chunk.doc_id not in drop]
-    return kept, warnings
+            notes.append(f"Excluded outdated document {conflict['outdated_doc_id']} "
+                         f"(replaced by {conflict['current_doc_id']}).")
+    kept = [rc for rc in result.chunks if rc.chunk.doc_id not in drop][:top_k]
+
+    sent_docs = {rc.chunk.doc_id for rc in kept}
+    for conflict in result.conflicts:
+        if not conflict["current_doc_retrieved"] and conflict["outdated_doc_id"] in sent_docs:
+            notes.append(f"Only the outdated document {conflict['outdated_doc_id']} was retrieved; "
+                         f"its replacement {conflict['current_doc_id']} was not. Check the policy manually.")
+    return kept, notes
 
 
 def generate_draft(ticket_text: str, retriever: Retriever, llm: LLMClient,
                    top_k: int = 5, max_retries: int = 1) -> DraftResult:
+    # Mask PII first: this function is the single path to the LLM, so masking
+    # here protects every caller (the /answer endpoint and stored tickets).
+    masked = mask_pii(ticket_text)
+    ticket_text = masked.text
+
     # Stages 6-7: retrieval + evidence check (no LLM involved).
-    retrieval = retriever.retrieve(ticket_text, top_k=top_k)
+    # Fetch 2x the chunks we need: if outdated documents fill some slots and are
+    # dropped below, current chunks take their place instead of the prompt
+    # silently shrinking (a real bug seen with the 2024 vs 2026 refund policy).
+    retrieval = retriever.retrieve(ticket_text, top_k=top_k * 2)
     if not retrieval.evidence_sufficient:
         # Weak evidence: don't even ask the LLM. Saves time and removes the
         # chance of a confident answer built on irrelevant passages.
-        return DraftResult("insufficient_evidence", HANDOFF_REPLY, [], [retrieval.reason], retrieval)
+        return DraftResult("insufficient_evidence", HANDOFF_REPLY, [], [retrieval.reason], retrieval,
+                           pii_masked=masked.found)
 
-    chunks, warnings = select_sources(retrieval)
-    sources = {f"S{i}": rc for i, rc in enumerate(chunks, start=1)}
+    chunks, warnings = select_sources(retrieval, top_k)
+    sources ={f"S{i}": rc for i, rc in enumerate(chunks, start=1)}
     user_prompt = build_user_prompt(ticket_text, sources)                       # stage 8
 
     # Stage 9: call the LLM. Retry only if the reply is not valid JSON for our
@@ -101,14 +117,15 @@ def generate_draft(ticket_text: str, retriever: Retriever, llm: LLMClient,
     sent = [rc.chunk.chunk_id for rc in chunks]
 
     if parsed is None:
-        return DraftResult("generation_failed", "", [], warnings + [error], retrieval, sent, True, llm_info)
+        return DraftResult("generation_failed", "", [], warnings + [error], retrieval, sent, True,
+                           llm_info, masked.found)
 
     if not parsed.evidence_sufficient:
         # The model, after reading the sources, says they don't answer the ticket.
         note = parsed.missing_information or "no reason given"
         return DraftResult("insufficient_evidence", HANDOFF_REPLY, [],
                            warnings + [f"Model reported missing information: {note}"],
-                           retrieval, sent, True, llm_info)
+                           retrieval, sent, True, llm_info, masked.found)
 
     # Stage 10: validate citations against what we actually sent.
     check = validate_citations(parsed.answer, parsed.cited_source_ids, set(sources))
@@ -126,4 +143,5 @@ def generate_draft(ticket_text: str, retriever: Retriever, llm: LLMClient,
     # Notes about excluded outdated docs are informational, not problems.
     problems = [w for w in warnings if not w.startswith("Excluded outdated")]
     status = "needs_attention" if problems else "grounded"
-    return DraftResult(status, check.cleaned_answer, citations, warnings, retrieval, sent, True, llm_info)
+    return DraftResult(status, check.cleaned_answer, citations, warnings, retrieval, sent, True,
+                       llm_info, masked.found)
